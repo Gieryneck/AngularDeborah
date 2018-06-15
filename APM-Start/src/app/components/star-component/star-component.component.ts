@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'pm-star-component',
@@ -9,6 +9,11 @@ export class StarComponentComponent implements OnInit {
 
     @Input() rating: number;
     starWidth: number;
+
+    @Output() sendRating: EventEmitter<number> = new EventEmitter<number>();
+    onClick(): void {
+        this.sendRating.emit(this.rating);
+    }
 
     constructor() { }
 
